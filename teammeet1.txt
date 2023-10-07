@@ -1,0 +1,38 @@
+public void menu() 
+{
+    Console.WriteLine("Welcome");
+}
+
+class PromptGenerator
+{
+    string _prompt;
+
+    DisplayPrompts;
+}
+
+class Entry{
+    string _answer;
+    datetime _date;
+
+    DisplayEntry;
+    EditEntry;
+    DeleteEntry;
+
+}
+
+class Journal 
+{
+    PromptGenerator list;
+    Entries list _entries;
+
+    DisplayEntries;
+    AddEntry;
+    LoadFromFile;
+    SaveToFile;
+}
+
+
+
+thursday = new Journal();
+_date = current datetime;
+_entries = new Entries<list>;
