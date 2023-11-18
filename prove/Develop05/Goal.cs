@@ -7,12 +7,13 @@ private int _pointValue;
 private int _goalType; // 1 for Simple, 2 for Eternal, 3 for Checklist
 private int _discountPoints;
 
-public Goal(string goalName, string goalDescription, int pointValue)
+public Goal(string goalName, string goalDescription, int pointValue, int discountPoints)
 {
     _goalName = goalName;
     _goalDescription = goalDescription;
     _pointValue = pointValue;
     _isComplete = false;
+    _discountPoints = discountPoints;
 }
 
 public void SetGoalType(int goalType)

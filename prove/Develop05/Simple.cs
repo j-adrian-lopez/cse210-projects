@@ -1,10 +1,9 @@
 public class Simple : Goal
 {
 
-public Simple(string goalName, string goalDescription, int pointValue): base(goalName, goalDescription, pointValue)
+public Simple(string goalName, string goalDescription, int pointValue, int discountPoints): base(goalName, goalDescription, pointValue, discountPoints)
 {
     SetGoalType(1);
-    SetDiscountPoints(5);
 }
 public override int RecordEvent()
 {
@@ -24,7 +23,7 @@ public override bool IsComplete()
 
 public override string ConvertToString()
 {
-    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{GetCompletion()}";
+    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{GetCompletion()}|{GetDiscountPoints()}";
 }
 
 }

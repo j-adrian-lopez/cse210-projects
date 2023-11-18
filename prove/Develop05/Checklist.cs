@@ -3,7 +3,7 @@ public class Checklist : Goal
 private int _bonusPoints;
 private int _timesAccomplished;
 private int _timesToAccomplish;
-public Checklist(string goalName, string goalDescription, int pointValue, int bonusPoints, int timesToAccomplish): base(goalName, goalDescription, pointValue)
+public Checklist(string goalName, string goalDescription, int pointValue, int bonusPoints, int timesToAccomplish, int discountPoints): base(goalName, goalDescription, pointValue, discountPoints)
 {
     _bonusPoints = bonusPoints;
     _timesToAccomplish = timesToAccomplish;
@@ -66,6 +66,6 @@ public override bool IsComplete()
 
 public override string ConvertToString()
 {
-    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{_bonusPoints}|{GetTimesAccomplished()}|{GetTimes()}|{GetCompletion()}";
+    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{_bonusPoints}|{GetTimesAccomplished()}|{GetTimes()}|{GetCompletion()}|{GetDiscountPoints()}";
 }
 }

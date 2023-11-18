@@ -1,10 +1,9 @@
 public class Eternal : Goal
 {
 private DateTime _completionDate;
-public Eternal(string goalName, string goalDescription, int pointValue): base(goalName, goalDescription, pointValue)
+public Eternal(string goalName, string goalDescription, int pointValue, int discountPoints): base(goalName, goalDescription, pointValue, discountPoints)
 {
     SetGoalType(2);
-    SetDiscountPoints(5);
 }
 
 public void SetCompletionDate(DateTime date)
@@ -34,6 +33,6 @@ public override bool IsComplete()
 
 public override string ConvertToString()
 {
-    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{GetCompletion()}";
+    return $"{GetGoalType()}|{GetGoal()}|{GetDescription()}|{GetPoints()}|{GetCompletion()}|{GetDiscountPoints()}";
 }
 }

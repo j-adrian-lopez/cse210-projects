@@ -98,18 +98,18 @@ public void LoadFromFile() {
         switch(type)
         {
             case 1:
-            Simple simpleGoal = new Simple(parts[1], parts[2], int.Parse(parts[3]));
+            Simple simpleGoal = new Simple(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]));
             simpleGoal.SetCompletion(bool.Parse(parts[4]));
             goals.Add(simpleGoal);
             break;
 
             case 2:
-            Eternal eternalGoal = new Eternal(parts[1], parts[2], int.Parse(parts[3]));
+            Eternal eternalGoal = new Eternal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]));
             goals.Add(eternalGoal);
             break;
 
             case 3:
-            Checklist checklistGoal = new Checklist(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[6]));
+            Checklist checklistGoal = new Checklist(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[6]), int.Parse(parts[8]));
             checklistGoal.SetCompletion(bool.Parse(parts[7]));
             checklistGoal.SetTimesAccomplished(int.Parse(parts[5]));
             goals.Add(checklistGoal);
@@ -122,6 +122,11 @@ public void LoadFromFile() {
 public void SumPoint(int points)
 {
     _totalPoints += points;
+}
+
+public void Discount(int points)
+{
+    _totalPoints -= points;
 }
 
 public string InputName()
@@ -159,6 +164,13 @@ public int InputBonus()
     return bonus;
 }
 
+public int InputDiscount()
+{
+    Console.Write("How many points should be discounted if the goal is deleted before completion? ");
+    int discount = int.Parse(Console.ReadLine());
+    return discount;
+}
+
 public void AddToList(Goal goal)
 {
     _goalList.Add(goal);
@@ -169,5 +181,41 @@ public void GetTotal()
 
     Console.WriteLine($"\nYou have {_totalPoints} points.\n");
 }
+
+public void DeleteGoal()
+{
+    
+    Console.Write("Which goal would you like to delete? ");
+    int goalNum = int.Parse(Console.ReadLine());
+    if(goalNum > _goalList.Count()) {
+        Console.WriteLine("Please select a valid goal.");
+    }
+    else if(_goalList[goalNum - 1].GetCompletion() == true)
+    {
+        _goalList.RemoveAt(goalNum - 1);
+        Console.WriteLine("Your completed goal has been deleted");
+    }
+
+    else
+    {
+        Goal goal = _goalList[goalNum - 1];
+        int pointsToDiscount = goal.GetDiscountPoints();
+        Console.WriteLine($"This goal has not been completed. If you delete it, you get a discount of {pointsToDiscount} points");
+        Console.Write("Would you like to proceed with the deletion? (y/n) ");
+        string response = Console.ReadLine();
+        while(response.ToLower() != "y" || response.ToLower() != "yes")
+        {
+            Console.WriteLine("Deletion Canceled.");
+            break;
+        }
+
+        _goalList.RemoveAt(goalNum - 1);
+        Console.WriteLine("Deletion Complete.");
+        Discount(pointsToDiscount);
+        Console.WriteLine($"{pointsToDiscount} points have been discounted from your total points.");
+        Console.WriteLine($"You now have {_totalPoints} points.");
+
+    }
+    }
 
 }

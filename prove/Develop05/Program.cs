@@ -10,6 +10,7 @@ class Program
         string description;
         int points;
         int reply;
+        int discount;
 
         ManageInterface newInterface = new ManageInterface();
         Menu menu = new Menu();
@@ -27,16 +28,17 @@ class Program
                 name = newInterface.InputName();
                 description = newInterface.InputDescription();
                 points = newInterface.InputPoints();
+                discount = newInterface.InputDiscount();
 
                 switch(type)
                 {
                     case 1:
-                    Simple simpleGoal = new Simple(name, description, points);
+                    Simple simpleGoal = new Simple(name, description, points, discount);
                     newInterface.AddToList(simpleGoal);
                     break;
 
                     case 2:
-                    Eternal eternalGoal = new Eternal(name, description, points);
+                    Eternal eternalGoal = new Eternal(name, description, points, discount);
                     newInterface.AddToList(eternalGoal);
                     break;
 
@@ -44,7 +46,7 @@ class Program
                     int times = newInterface.InputTimes();
                     int bonus = newInterface.InputBonus();
                     
-                    Checklist checklistGoal = new Checklist(name, description, points, bonus, times);
+                    Checklist checklistGoal = new Checklist(name, description, points, bonus, times, discount);
                     newInterface.AddToList(checklistGoal);
                     break;
 
@@ -75,12 +77,18 @@ class Program
                 break;
 
                 case 6:
+                newInterface.DisplayNames();
+                newInterface.DeleteGoal();
+                break;
+
+                case 7:
+                Console.WriteLine("Goodbye!\n");
                 break;
 
                 default:
                 Console.WriteLine("Please choose a valid option.\n");
                 break;
             } 
-        } while(reply!=6);
+        } while(reply!=7);
     }
 }
