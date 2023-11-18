@@ -35,6 +35,7 @@ public void DisplayGoalList()
 public void DisplayNames()
 {
     int index = 1;
+    Console.WriteLine("These are your goals: ");
     foreach(Goal goal in _goalList)
     {
         Console.Write($"{index}. ");
@@ -69,7 +70,8 @@ public void Register()
 
 public void SaveToFile()
 {
-string fileName = "goals.txt";
+Console.Write("Please enter the name for the output file: ");
+        string fileName = Console.ReadLine() + ".txt";
 
 using (StreamWriter outputFile = new StreamWriter(fileName))
 {
@@ -203,17 +205,18 @@ public void DeleteGoal()
         Console.WriteLine($"This goal has not been completed. If you delete it, you get a discount of {pointsToDiscount} points");
         Console.Write("Would you like to proceed with the deletion? (y/n) ");
         string response = Console.ReadLine();
-        while(response.ToLower() != "y" || response.ToLower() != "yes")
+        if(response != "y")
         {
             Console.WriteLine("Deletion Canceled.");
-            break;
-        }
-
+        } 
+        else
+        { 
         _goalList.RemoveAt(goalNum - 1);
         Console.WriteLine("Deletion Complete.");
         Discount(pointsToDiscount);
         Console.WriteLine($"{pointsToDiscount} points have been discounted from your total points.");
         Console.WriteLine($"You now have {_totalPoints} points.");
+        }
 
     }
     }
