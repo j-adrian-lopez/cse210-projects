@@ -43,6 +43,7 @@ class Program
         eventList.Add(event3);
 
         Console.Clear();
+        Console.WriteLine("Program 3: Inheritance with Event Planning\n");
         int counter = 1;
         foreach(Event newEvent in eventList)
         {
