@@ -55,7 +55,7 @@ public class Event
     public string DisplayStandard()
     {
         return "Standard Details:\n" +
-                $"Event: {_title}\nDescription: {_description}\nDate:{_date}\nTime:{_time}\nAddress: {_address.GetFullAddress()}\n";
+                $"Event: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.GetFullAddress()}\n";
     }
 
     public virtual string DisplayFullDetails()

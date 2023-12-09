@@ -13,35 +13,6 @@ public class Address
         _state = state;
     }
 
-    public string GetStreet()
-    {
-        return _street;
-    }
-
-    public void SetStreet(string street)
-    {
-        _street = street;
-    }
-
-    public string GetCity()
-    {
-        return _city;
-    }
-
-    public void SetCity(string city)
-    {
-        _city = city;
-    }
-
-    public string GetState()
-    {
-        return _state;
-    }
-
-    public void SetState(string state)
-    {
-        _state = state;
-    }
 
     public string GetFullAddress()
     {

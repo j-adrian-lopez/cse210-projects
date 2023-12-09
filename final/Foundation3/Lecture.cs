@@ -11,16 +11,6 @@ public class Lecture : Event
         SetType("Lecture");
     }
 
-    public string GetSpeaker()
-    {
-        return _speaker;
-    }
-
-    public int GetCapacity()
-    {
-        return _capacity;
-    }
-
     public override string DisplayFullDetails()
     {
         return "Full Details:\n" +

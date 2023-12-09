@@ -8,15 +8,10 @@ public class Reception : Event
         SetType("Reception");
     }
 
-    public string GetEmail()
-    {
-        return _email;
-    }
-
 
     public override string DisplayFullDetails()
     {
         return "Full Details:\n" +
-                $"Event: {GetTitle()}\nDescription: {GetDescription()}\nDate:{GetDate()}\nTime:{GetTime()}\nAddress: {GetAddress().GetFullAddress()}\nRSVP Email:{_email}\n";
+                $"Event: {GetTitle()}\nDescription: {GetDescription()}\nDate: {GetDate()}\nTime: {GetTime()}\nAddress: {GetAddress().GetFullAddress()}\nRSVP Email: {_email}\n";
     }
 }

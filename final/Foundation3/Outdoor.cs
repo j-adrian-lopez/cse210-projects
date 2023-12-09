@@ -9,15 +9,11 @@ public class Outdoor : Event
         SetType("Outdoor");
     }
 
-    public string GetWeather()
-    {
-        return _weather;
-    }
 
     public override string DisplayFullDetails()
     {
         return "Full Details:\n" +
-                         $"Event: {GetTitle()}\nDescription: {GetDescription()}\nDate:{GetDate()}\nTime:{GetTime()}\nAddress: {GetAddress().GetFullAddress()}\nWeather Forecast: {_weather}\n";
+                         $"Event: {GetTitle()}\nDescription: {GetDescription()}\nDate: {GetDate()}\nTime: {GetTime()}\nAddress: {GetAddress().GetFullAddress()}\nWeather Forecast: {_weather}\n";
     }
 
 }
